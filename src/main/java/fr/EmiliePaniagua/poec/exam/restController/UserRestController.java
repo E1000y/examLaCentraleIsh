@@ -6,11 +6,9 @@ import fr.EmiliePaniagua.poec.exam.JsonViews.JsonViews;
 import fr.EmiliePaniagua.poec.exam.entity.User;
 import fr.EmiliePaniagua.poec.exam.repository.UserRepository;
 import fr.EmiliePaniagua.poec.exam.service.UserService;
+import io.swagger.v3.core.util.Json;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,9 +27,10 @@ public class UserRestController {
     }
 
     @GetMapping(path = "/{id}")
+    @JsonView(JsonViews.UserShowView.class)
     public Optional<User> findById(@PathVariable Long id) {
             return this.userService.findById(id);
 
-
+    @PostMapping(path="")
     }
 }
