@@ -2,6 +2,7 @@ package fr.EmiliePaniagua.poec.exam.restController;
 
 import fr.EmiliePaniagua.poec.exam.DTO.UserPostDTO;
 import com.fasterxml.jackson.annotation.JsonView;
+import fr.EmiliePaniagua.poec.exam.DTO.UserPutDTO;
 import fr.EmiliePaniagua.poec.exam.JsonViews.JsonViews;
 import fr.EmiliePaniagua.poec.exam.entity.User;
 import fr.EmiliePaniagua.poec.exam.repository.UserRepository;
@@ -21,11 +22,11 @@ public class UserRestController {
 
     private UserService userService;
 
-    @GetMapping
-    @JsonView(JsonViews.UserShowView.class)
-    public List<User> list() {
-        return this.userService.findAll();
-    }
+//    @GetMapping
+//    @JsonView(JsonViews.UserShowView.class)
+//    public List<User> list() {
+//        return this.userService.findAll();
+//    }
 
     @GetMapping(path = "/{id}")
     @JsonView(JsonViews.UserShowView.class)
@@ -45,5 +46,14 @@ public class UserRestController {
     User create(@Valid @RequestBody UserPostDTO userDTO){
         return userService.create(userDTO);
     }
+
+//    @PutMapping(path="/{id}")
+//            @JsonView(JsonViews.UserShowView.class)
+//    User edit(@Valid @RequestBody UserPutDTO userDTO, @PathVariable Long id){
+//        User user = new User();
+//        user.setPassword(userDTO.getPassword());
+//        user.setEmail(userDTO.getEmail());
+//        return userService.save(userDTO, id)
+//    }
 
 }

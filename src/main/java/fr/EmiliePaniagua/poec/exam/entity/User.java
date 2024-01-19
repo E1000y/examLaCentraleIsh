@@ -3,6 +3,7 @@ package fr.EmiliePaniagua.poec.exam.entity;
 import com.fasterxml.jackson.annotation.JsonView;
 import fr.EmiliePaniagua.poec.exam.JsonViews.JsonViews;
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,8 @@ public class User {
     @JsonView(JsonViews.UserListView.class)
     private Long id;
 
-
-    private Date createdAt;
+    @Timestamp
+    private Date createdAt = new Date();
 
     @JsonView(JsonViews.UserListView.class)
     private String email;
